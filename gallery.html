@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="header_opt">
+        <img id="i1" src="cclogo-removebg-preview.png" alt="Logo">
+        <div id="option">
+            <ul>
+                <li><a id="a1" href="home.html">Home</a></li>
+                <li><a id="a1" href="book now.html">Book Now</a></li>
+                <li><a id="a1" href="gallery.html">Gallery</a></li>
+                <li><a id="a1" href="profile.html">Profile</a></li>
+            </ul>
+            <a id="a3" href="javascript:void(0)"><i class="fa-solid fa-bars"></i></a>
+        </div>
+    </div>
+    
+    <!-- Image viewer -->
+    <div class="image-viewer" id="imageViewer">
+        <span class="close-btn" id="closeImageBtn">&times;</span>
+        <img id="viewerImg" src="" alt="Expanded View">
+    </div>
+
+    <!-- Video viewer -->
+    <div class="video-viewer" id="videoViewer">
+        <span class="close-btn" id="closeVideoBtn">&times;</span>
+        <video id="viewerVideo" controls></video>
+    </div>
+
+    <section class="gallery-section">
+        <h2>💖 Wedding Memories</h2>
+        <div class="pic">
+            <img src="DSC_0506.JPG" alt="Bride getting ready">
+            <img src="DSC_0514.JPG" alt="Groom waiting">
+            <img src="DSC_0513.JPG" alt="Walking down the aisle">
+            <img src="DSC_0619.JPG" alt="Candid couple smile">
+            <img src="DSC_0661.JPG" alt="Post-ceremony joy">
+            <img src="DSC_0584.JPG" alt="Details and flowers">
+            <img src="DSC_0697.JPG" alt="Reception laughter">
+            <img src="DSC_0719.JPG" alt="Couple dancing">
+            <img src="DSC_0762.JPG" alt="The wedding cake">
+            <img src="WhatsApp Image 2025-07-12 at 15.25.30_da4b3620.jpg" alt="Final portrait">
+            <img src="DSC_0590.JPG" alt="Ring exchange">
+            <video controls src="Video-557.mp4"></video>
+            <img src="DSC_0625.JPG">
+            <img src="WhatsApp Image 2025-07-15 at 07.54.32_2aeb2bb1.jpg" alt="Wedding moment">
+            <video controls src="WhatsApp Video 2025-07-16 at 17.31.15_356a78ce.mp4"></video>
+            <video controls src="WhatsApp Video 2025-07-16 at 17.31.17_4dd6dbcf.mp4"></video>
+        </div>
+    </section>
+
+    <section class="visiting-card">
+        <h2>📸 Contact Classic Capture</h2>
+        <img src="WhatsApp Image 2025-07-15 at 07.54.32_959fb92a.jpg" alt="Classic Capture Visiting Card" />
+    </section>
+
+    <script>
+        const images = document.querySelectorAll('.pic img');
+        const viewer = document.getElementById('imageViewer');
+        const viewerImg = document.getElementById('viewerImg');
+        const closeImageBtn = document.getElementById('closeImageBtn');
+
+        let currentImgIndex = 0;
+        const imageArray = Array.from(images);
+
+        function showImage(index) {
+            const img = imageArray[index];
+            viewerImg.src = img.src;
+            viewerImg.alt = img.alt;
+            viewer.style.display = 'flex';
+            currentImgIndex = index;
+        }
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => showImage(index));
+        });
+
+        closeImageBtn.addEventListener('click', () => viewer.style.display = 'none');
+
+        viewer.addEventListener('click', (e) => {
+            if (e.target === viewer || e.target === viewerImg) {
+                viewer.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (viewer.style.display === 'flex') {
+                if (e.key === 'ArrowRight') {
+                    currentImgIndex = (currentImgIndex + 1) % imageArray.length;
+                    showImage(currentImgIndex);
+                } else if (e.key === 'ArrowLeft') {
+                    currentImgIndex = (currentImgIndex - 1 + imageArray.length) % imageArray.length;
+                    showImage(currentImgIndex);
+                } else if (e.key === 'Escape') {
+                    viewer.style.display = 'none';
+                }
+            }
+        });
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        viewerImg.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        viewerImg.addEventListener('touchend', (e) => {
+            const diff = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    currentImgIndex = (currentImgIndex - 1 + imageArray.length) % imageArray.length;
+                } else {
+                    currentImgIndex = (currentImgIndex + 1) % imageArray.length;
+                }
+                showImage(currentImgIndex);
+            }
+        });
+
+        // Video viewer
+        const videos = document.querySelectorAll('.pic video');
+        const videoViewer = document.getElementById('videoViewer');
+        const viewerVideo = document.getElementById('viewerVideo');
+        const closeVideoBtn = document.getElementById('closeVideoBtn');
+
+        videos.forEach(video => {
+            video.addEventListener('click', () => {
+                viewerVideo.src = video.src;
+                viewerVideo.play();
+                videoViewer.style.display = 'flex';
+            });
+        });
+
+        closeVideoBtn.addEventListener('click', () => {
+            videoViewer.style.display = 'none';
+            viewerVideo.pause();
+            viewerVideo.src = '';
+        });
+
+        videoViewer.addEventListener('click', (e) => {
+            if (e.target === videoViewer || e.target === viewerVideo) {
+                videoViewer.style.display = 'none';
+                viewerVideo.pause();
+                viewerVideo.src = '';
+            }
+        });
+    </script>
+
+    
+    <footer>
+        <div id="f1">Back to Top</div>
+        <div id="fc">
+            <div id="f2"><img id="i2" src="cclogo-removebg-preview.png"></div>
+            <div id="f2">
+                <h3>Available in</h3>
+                <p>Chapra</p>
+                <p>Siwan</p>
+                <p>Gopalganj</p>
+                <p>Patna</p>
+            </div>
+            <div id="f2">
+                <h3>Contect us</h3>
+                <p><a id="a2" href="https://www.instagram.com/classic_capture_7104?igsh=NHQwcGkyZGRoYjFp">Instagram</a>
+                </p>
+                <p><a id="a2" href="https://www.facebook.com/profile.php?id=100077020161535">Facebook</a></p>
+                <p><a id="a2" href="https://www.linkedin.com/in/rishan-kumar-6a0276369">Linkdin</a></p>
+                +91 7765962309
+            </div>
+            <div id="f2">
+                <h3>Why choose us</h3>
+                <p>Experience Cameraman</p>
+                <p> Best Team</p>
+                <p> Best Service</p>
+                <p>HD Videography</p>
+            </div>
+        </div>
+        <div id="f6">
+            <a href="https://www.instagram.com/classic_capture_7104?igsh=NHQwcGkyZGRoYjFp"><i
+                    class="fa-brands fa-instagram" style="color: red;"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100077020161535"><i class="fa-brands fa-facebook"
+                    style="color: blue;"></i></a>
+            <a href="https://www.linkedin.com/in/rishan-kumar-6a0276369"><i class="fa-brands fa-linkedin"></i></a>
+            <i class="fa-solid fa-phone"></i>
+            +91 7765962309
+        </div>
+    </footer>
+    <a href="tel:+917765962309" class="call-btn"><i class="fa fa-phone"></i>Call Us</a>
+    <script>
+        const toggleBtn = document.getElementById("a3");
+        const header = document.getElementById("header_opt");
+        toggleBtn.addEventListener("click", () => {
+            header.classList.toggle("active");
+        });
+    </script>
+</body>
+
+</html>
