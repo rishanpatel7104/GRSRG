@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff7f9;
+  color: #5e2b4c;
+  margin: 0;
+  padding: 0;
+}
+
+
+#header_opt {
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#header_opt ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  transition: max-height 0.3s ease;
+}
+
+#i1 {
+  height: 80px;
+  width: auto;
+  margin-right: auto;
+}
+
+#a1,
+#a3 {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 8px 14px;
+  transition: 0.3s;
+}
+
+#a1:hover,
+#a3:hover {
+  background-color: #ff4081;
+  color: white;
+  border-radius: 5px;
+}
+
+
+#a3 {
+  display: none;
+  font-size: 24px;
+}
+
+#content {
+  padding: 40px 20px;
+  background-color: #fdf5f8;
+}
+
+#i1 {
+  height: 80px;
+  width: auto;
+  margin-right: auto;
+}
+
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #2c3e50;
+  color: #fff;
+  padding: 30px 20px;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #f39c12;
+}
+
+.sidebar a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: #34495e;
+  color: #fff;
+}
+
+h2 {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.booking-card {
+  background: #eaf2ff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 5px solid #ff4d6d;
+  border-radius: 10px;
+  width: 180%;
+}
+
+.booking-card h3 {
+  margin-bottom: 5px;
+}
+
+.booking-card p {
+  color: #666;
+}
+
+.dashboard-content {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.dashboard {
+  margin: 20px;
+}
+
+.dashboard-header {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashboard-nav {
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+footer {
+  background-color: #ffe4ec;
+  padding: 40px 20px 20px;
+  color: #333;
+}
+
+#fc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+#f2 {
+  flex: 1 1 200px;
+}
+
+#f2 h3 {
+  margin-bottom: 10px;
+  color: #d81b60;
+}
+
+#a2 {
+  text-decoration: none;
+  color: #333;
+}
+
+#a2:hover {
+  text-decoration: underline;
+  color: #ff4081;
+}
+
+#f6 {
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#f6 i {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+#f1 {
+  text-align: center;
+  font-weight: bold;
+  color: #ff4081;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+
+.call-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4081;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 999;
+}
+
+.call-btn i {
+  margin-right: 8px;
+}
+@media screen and (max-width: 361px) {
+
+  /* Navigation header */
+  #header_opt ul {
+    flex-direction: column;
+    align-items: flex-start;
+    background: bisque;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 70%; /* Increased width for better touch accessibility */
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  #header_opt.active ul {
+    max-height: 300px;
+    overflow: visible;
+  }
+
+  #a3 {
+    display: block;
+  }
+
+  #i2 {
+    width: 80%;
+    padding: 10%;
+  }
+
+  /* Layout changes */
+  .container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 20px 15px;
+    text-align: center;
+  }
+
+  .sidebar a {
+    display: inline-block;
+    margin: 8px;
+    font-size: 14px;
+  }
+
+  .dashboard {
+    margin: 0px;
+    width: 100%;
+  }
+
+  .dashboard-content {
+    
+    margin-left: 5%;
+    padding: 0;
+  }
+
+  .booking-card {
+    width: 90% !important;
+    padding-left: 5%;
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin: 5%;
+  }
+
+  .main {
+    padding: 20px 10px;
+    width: 100%;
+  }
+
+  .section {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  /* Footer image responsive */
+  #i2 {
+    width: 80%;
+    padding: 10%;
+  }
+
+  /* Call button spacing */
+  .call-btn {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+
+        </style>
+</head>
+
+<body>
+    <div id="header_opt">
+        <img id="i1" src="cclogo-removebg-preview.png" alt="Logo">
+        <div id="option">
+            <ul>
+                <li><a id="a1" href="home.html">Home</a></li>
+                <li><a id="a1" href="book now.html">Book Now</a></li>
+                <li><a id="a1" href="gallery.html">Gallery</a></li>
+                <li><a id="a1" href="profile.html">Profile</a></li>
+            </ul>
+            <a id="a3" href="javascript:void(0)"><i class="fa-solid fa-bars"></i></a>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="sidebar">
+            <h2>Profile</h2>
+            <a href="profile.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="my booking.html"><i class="fas fa-calendar-alt"></i> My Bookings</a>
+            <a href="https://wa.me/917765962309"><i class="fas fa-comments"></i> Chat</a>
+            <a href="notification.html"><i class="fa-regular fa-envelope"></i> Notification</a>
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+
+
+        <div class="dashboard">
+
+
+
+            <div class="dashboard-content">
+                <div class="section-title">📷 Your Bookings</div>
+
+                <div class="booking-card">
+                    <h3>Engagement Polular Package</h3>
+                    <p>Date: 15 August 2025</p>
+                    <p>Location: Chapra</p>
+                    <span class="status upcoming">Upcoming</span>
+                </div>
+
+                <div class="booking-card">
+                    <h3>Wedding Popular Shoot</h3>
+                    <p>Date: 15 August 2024</p>
+                    <p>Location: Chapra</p>
+                    <span class="status completed">Completed</span>
+                </div>
+
+                <div class="section-title">📦 Selected Package</div>
+                <div class="booking-card">
+                    <h3>Popular Wedding Package</h3>
+                    <p>Includes: Full-day coverage, Drone shots, 2 Albums, Pre-wedding shoot</p>
+                    <p>Price: ₹29999 only</p>
+                </div>
+            </div>
+
+        </div>
+
+</div>
+
+        <script>
+            const toggleBtn = document.getElementById("a3");
+            const header = document.getElementById("header_opt");
+            toggleBtn.addEventListener("click", () => {
+                header.classList.toggle("active");
+            });
+        </script>
+        <footer>
+            <div id="f1">Back to Top</div>
+            <div id="fc">
+                <div id="f2"><img id="i2" src="cclogo-removebg-preview.png"></div>
+                <div id="f2">
+                    <h3>Available in</h3>
+                    <p>Chapra</p>
+                    <p>Siwan</p>
+                    <p>Gopalganj</p>
+                    <p>Patna</p>
+                </div>
+                <div id="f2">
+                    <h3>Contect us</h3>
+                    <p><a id="a2"
+                            href="https://www.instagram.com/classic_capture_7104?igsh=NHQwcGkyZGRoYjFp">Instagram</a>
+                    </p>
+                    <p><a id="a2" href="https://www.facebook.com/profile.php?id=100077020161535">Facebook</a></p>
+                    <p><a id="a2" href="https://www.linkedin.com/in/rishan-kumar-6a0276369">Linkdin</a></p>
+                    +91 7765962309
+                </div>
+                <div id="f2">
+                    <h3>Why choose us</h3>
+                    <p>Experience Cameraman</p>
+                    <p> Best Team</p>
+                    <p> Best Service</p>
+                    <p>HD Videography</p>
+                </div>
+            </div>
+            <div id="f6">
+                <a href="https://www.instagram.com/classic_capture_7104?igsh=NHQwcGkyZGRoYjFp"><i
+                        class="fa-brands fa-instagram" style="color: red;"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100077020161535"><i class="fa-brands fa-facebook"
+                        style="color: blue;"></i></a>
+                <a href="https://www.linkedin.com/in/rishan-kumar-6a0276369"><i class="fa-brands fa-linkedin"></i></a>
+                <i class="fa-solid fa-phone"></i>
+                +91 7765962309
+            </div>
+        </footer>
+        <a href="tel:+917765962309" class="call-btn"><i class="fa fa-phone"></i>Call Us</a>
+
+</body>
+
+</html>
