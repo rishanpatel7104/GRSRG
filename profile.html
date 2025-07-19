@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="header_opt">
+        <img id="i1" src="cclogo-removebg-preview.png" alt="Logo">
+        <div id="option">
+            <ul>
+                <li><a id="a1" href="home.html">Home</a></li>
+                <li><a id="a1" href="book now.html">Book Now</a></li>
+                <li><a id="a1" href="gallery.html">Gallery</a></li>
+                <li><a id="a1" href="profile.html">Profile</a></li>
+            </ul>
+            <a id="a3" href="javascript:void(0)"><i class="fa-solid fa-bars"></i></a>
+        </div>
+    </div>
+    
+   
+    <div class="container">
+
+        <div class="sidebar">
+            <h2>Profile</h2>
+            <a href="profile.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="my booking.html"><i class="fas fa-calendar-alt"></i> My Bookings</a>
+            <a href="https://wa.me/917765962309"><i class="fas fa-comments"></i> Chat</a>
+            <a href="notification.html"><i class="fa-regular fa-envelope"></i> Notification</a>
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+
+        <div class="main">
+
+
+
+            <!-- Profile -->
+            <div class="profile">
+                <img src="rp1.jpg" alt="Client">
+
+                <h3>Hello, Rishan</h3>
+            </div>
+            <div id="prorec">
+                <div class="profile2">
+                    <h2>Your Details</h2>
+                    <p> <i class="fa-solid fa-person"></i>Name Rishan Patel </p>
+                    <p><i class="fa-solid fa-phone-volume"></i>Phone no +91 7765962309</p>
+                    <p><i class="fa-solid fa-envelope-open-text"></i>Email kumarrishan754@gmail.com</p>
+                    <p><i class="fa-solid fa-location-dot"></i>Location Chapra</p>
+                </div>
+                <div id="record">
+                    <h2>Your Record </h2>
+                    <p> Total Events 2</p>
+                    <p>Completed Events 1</p>
+                    <p>Upcoming Events 1</p>
+                </div>
+            </div>
+
+
+            <!-- Gallery -->
+            <div class="section">
+                <h2>📸 Completed Gallery</h2>
+                <div class="gallery">
+                    <a href="gallery.html"> <img src="DSC_0584.JPG" alt="Gallery 1"></a>
+                    <a href="gallery.html"> <img src="DSC_0514.JPG" alt="Gallery 2"></a>
+                    <a href="gallery.html"> <img src="DSC_0625.JPG" alt="Gallery 3"></a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <footer>
+        <div id="f1">Back to Top</div>
+        <div id="fc">
+            <div id="f2"><img id="i2" src="cclogo-removebg-preview.png"></div>
+            <div id="f2">
+                <h3>Available in</h3>
+                <p>Chapra</p>
+                <p>Siwan</p>
+                <p>Gopalganj</p>
+                <p>Patna</p>
+            </div>
+            <div id="f2">
+                <h3>Contect us</h3>
+                <p><a id="a2" href="https://www.instagram.com/classic_capture_7104?igsh=NHQwcGkyZGRoYjFp">Instagram</a>
+                </p>
+                <p><a id="a2" href="https://www.facebook.com/profile.php?id=100077020161535">Facebook</a></p>
+                <p><a id="a2" href="https://www.linkedin.com/in/rishan-kumar-6a0276369">Linkdin</a></p>
+                +91 7765962309
+            </div>
+            <div id="f2">
+                <h3>Why choose us</h3>
+                <p>Experience Cameraman</p>
+                <p> Best Team</p>
+                <p> Best Service</p>
+                <p>HD Videography</p>
+            </div>
+        </div>
+        <div id="f6">
+            <a href="https://www.instagram.com/classic_capture_7104?igsh=NHQwcGkyZGRoYjFp"><i
+                    class="fa-brands fa-instagram" style="color: red;"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100077020161535"><i class="fa-brands fa-facebook"
+                    style="color: blue;"></i></a>
+            <a href="https://www.linkedin.com/in/rishan-kumar-6a0276369"><i class="fa-brands fa-linkedin"></i></a>
+            <i class="fa-solid fa-phone"></i>
+            +91 7765962309
+        </div>
+    </footer>
+    <a href="tel:+917765962309" class="call-btn"><i class="fa fa-phone"></i>Call Us</a>
+   <script>
+    const toggleBtn = document.getElementById("a3");
+    const header = document.getElementById("header_opt");
+    toggleBtn.addEventListener("click", () => {
+      header.classList.toggle("active");
+    });
+  </script>
+</body>
+
+</html>
